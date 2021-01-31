@@ -1,4 +1,4 @@
-package com.android.recyclerviewsample_java;
+package com.android.recyclerviewsample_java.list;
 
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,8 +14,8 @@ public class SampleViewHolder {
             super(viewDataBinding.getRoot());
         }
 
-        // 抽象メソッド
-        abstract void bind(T viewData);
+        // 抽象メソッド　型を限定していないジェネリクス型
+        public abstract void bind(T viewData);
     }
 
     // ここで形がわかる？
@@ -31,7 +31,7 @@ public class SampleViewHolder {
         }
 
         @Override
-        void bind(HeaderViewData viewData) {
+        public void bind(HeaderViewData viewData) {
             // viewData をレイアウト要素と結びつけている
             itemHeaderBinding.setViewData(viewData);
         }
@@ -49,7 +49,7 @@ public class SampleViewHolder {
         }
 
         @Override
-        void bind(TextsViewData viewData) {
+        public void bind(TextsViewData viewData) {
             // viewData をレイアウト要素と結びつけている
             itemTextsBinding.setViewData(viewData);
         }

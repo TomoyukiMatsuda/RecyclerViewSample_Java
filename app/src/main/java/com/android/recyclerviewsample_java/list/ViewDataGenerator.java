@@ -1,4 +1,4 @@
-package com.android.recyclerviewsample_java;
+package com.android.recyclerviewsample_java.list;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,17 +20,17 @@ public class ViewDataGenerator {
 
     // 最初のセル要素
     private List<ViewData> firstCell() {
-        final HeaderViewData header = new HeaderViewData();
-        final TextsViewData texts = new TextsViewData();
+        final HeaderViewData header = new HeaderViewData("ファーストセル");
+        final TextsViewData texts = new TextsViewData("①", "一個だけ");
 
         return Arrays.asList(header, texts);
     }
 
     // ２番目のセル
     private List<ViewData> secondCell() {
-        final HeaderViewData header = new HeaderViewData();
-        final TextsViewData firstTexts = new TextsViewData();
-        final TextsViewData secondTexts = new TextsViewData();
+        final HeaderViewData header = new HeaderViewData("セカンドセル");
+        final TextsViewData firstTexts = new TextsViewData("①", "１つ目");
+        final TextsViewData secondTexts = new TextsViewData("②", "２つ目");
 
         return Arrays.asList(header, firstTexts, secondTexts);
     }

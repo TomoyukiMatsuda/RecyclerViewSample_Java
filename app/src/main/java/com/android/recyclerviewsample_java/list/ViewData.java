@@ -1,4 +1,4 @@
-package com.android.recyclerviewsample_java;
+package com.android.recyclerviewsample_java.list;
 
 import androidx.annotation.IntDef;
 import java.lang.annotation.Retention;

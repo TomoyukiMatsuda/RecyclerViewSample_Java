@@ -1,16 +1,14 @@
-package com.android.recyclerviewsample_java;
+package com.android.recyclerviewsample_java.list;
 
-import android.content.ClipData;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.recyclerviewsample_java.databinding.ItemHeaderBinding;
 import com.android.recyclerviewsample_java.databinding.ItemTextsBinding;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +18,7 @@ public class SampleAdapter extends RecyclerView.Adapter<SampleViewHolder.Default
 
     private List<ViewData> viewDataList;
 
-    SampleAdapter(List<ViewData> viewDataList) {
+    public SampleAdapter(List<ViewData> viewDataList) {
         this.viewDataList = viewDataList;
     }
 

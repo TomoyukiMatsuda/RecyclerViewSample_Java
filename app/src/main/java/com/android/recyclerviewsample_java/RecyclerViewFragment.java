@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.android.recyclerviewsample_java.databinding.FragmentRecyclerViewBinding;
+import com.android.recyclerviewsample_java.list.SampleAdapter;
+import com.android.recyclerviewsample_java.list.ViewDataGenerator;
 
 public class RecyclerViewFragment extends Fragment {
 
