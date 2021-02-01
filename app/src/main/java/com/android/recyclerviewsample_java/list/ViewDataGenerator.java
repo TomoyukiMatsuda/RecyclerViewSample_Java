@@ -14,6 +14,7 @@ public class ViewDataGenerator {
         // リストに追加していく処理を書いてゆく
         viewDataList.addAll(instance.firstCell());
         viewDataList.addAll(instance.secondCell());
+        viewDataList.addAll(instance.thirdCell());
 
         return viewDataList;
     }
@@ -33,5 +34,13 @@ public class ViewDataGenerator {
         final TextsViewData secondTexts = new TextsViewData("②", "２つ目");
 
         return Arrays.asList(header, firstTexts, secondTexts);
+    }
+
+    // ３番目のセル
+    private List<ViewData> thirdCell() {
+        final HeaderViewData header = new HeaderViewData("サードセル");
+        final FormButtonViewData formButton = new FormButtonViewData();
+
+        return Arrays.asList(header, formButton);
     }
 }

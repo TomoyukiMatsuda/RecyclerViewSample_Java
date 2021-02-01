@@ -2,6 +2,8 @@ package com.android.recyclerviewsample_java.list;
 
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.android.recyclerviewsample_java.databinding.ItemFormButtonBinding;
 import com.android.recyclerviewsample_java.databinding.ItemHeaderBinding;
 import com.android.recyclerviewsample_java.databinding.ItemTextsBinding;
 
@@ -11,6 +13,13 @@ public class SampleViewHolder {
     public static abstract class Default<T extends ViewData> extends RecyclerView.ViewHolder {
         public Default(ViewDataBinding viewDataBinding) {
             // レイアウト にアクセスしている
+            // public ViewHolder(@NonNull View itemView) {
+            //    if (itemView == null) {
+            //          throw new IllegalArgumentException("itemView may not be null");
+            //    }
+            //    this.itemView = itemView;
+            // }
+            // これのはず ↓↑
             super(viewDataBinding.getRoot());
         }
 
@@ -54,5 +63,20 @@ public class SampleViewHolder {
             itemTextsBinding.setViewData(viewData);
         }
     }
-    // cell の要素を持っている
+
+    public static class FormButton extends Default<FormButtonViewData> {
+        private final ItemFormButtonBinding itemFormButtonBinding;
+
+        public FormButton(ItemFormButtonBinding itemFormButtonBinding) {
+            super(itemFormButtonBinding);
+
+            this.itemFormButtonBinding = itemFormButtonBinding;
+        }
+
+        @Override
+        public void bind(FormButtonViewData viewData) {
+            // setViewData() の set~ は xml の<variable name="viewData" の命名に基づいて生成されるメソッド
+            itemFormButtonBinding.setViewData(viewData);
+        }
+    }
 }

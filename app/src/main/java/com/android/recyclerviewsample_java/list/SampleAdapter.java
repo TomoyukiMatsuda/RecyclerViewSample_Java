@@ -4,12 +4,9 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.android.recyclerviewsample_java.databinding.ItemFormButtonBinding;
 import com.android.recyclerviewsample_java.databinding.ItemHeaderBinding;
 import com.android.recyclerviewsample_java.databinding.ItemTextsBinding;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 // SampleViewHolderの抽象クラス Default を継承することで実際にはアダプターは View の詳細を知らない
@@ -26,21 +23,33 @@ public class SampleAdapter extends RecyclerView.Adapter<SampleViewHolder.Default
     @NonNull @Override
     public SampleViewHolder.Default onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
 
-        if (viewType == ViewData.Type.HEADER) {
-            ItemHeaderBinding binding =
-                    ItemHeaderBinding.inflate(LayoutInflater.from(viewGroup.getContext()), viewGroup,
-                            false);
+        switch (viewType) {
+            case ViewData.Type.HEADER: {
+                // バインディングオブジェクトを生成
+                ItemHeaderBinding binding =
+                        ItemHeaderBinding.inflate(LayoutInflater.from(viewGroup.getContext()), viewGroup,
+                                false);
 
-            // ここでインスタンス化してバインディング要素を引数で渡している
-            return new SampleViewHolder.Header(binding);
+                // SampleViewHolderの内部クラスにDataBindingオブジェクトを渡しながらインスタンス化している
+                return new SampleViewHolder.Header(binding);
+            }
+
+            case ViewData.Type.TEXTS: {
+                ItemTextsBinding binding =
+                        ItemTextsBinding.inflate(LayoutInflater.from(viewGroup.getContext()), viewGroup,
+                                false);
+
+                return new SampleViewHolder.Texts(binding);
+            }
+
+            default: {
+                ItemFormButtonBinding binding =
+                        ItemFormButtonBinding.inflate(LayoutInflater.from(viewGroup.getContext()), viewGroup,
+                                false);
+
+                return new SampleViewHolder.FormButton(binding);
+            }
         }
-
-        ItemTextsBinding binding =
-                ItemTextsBinding.inflate(LayoutInflater.from(viewGroup.getContext()), viewGroup,
-                        false);
-
-        // ここでインスタンス化
-        return new SampleViewHolder.Texts(binding);
     }
 
     @Override
