@@ -3,6 +3,7 @@ package com.android.recyclerviewsample_java.list;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import com.android.recyclerviewsample_java.databinding.ItemFormButtonBinding;
 import com.android.recyclerviewsample_java.databinding.ItemHeaderBinding;
@@ -13,9 +14,11 @@ import java.util.List;
 // つまり目隠しされているだから再利用が可能である
 public class SampleAdapter extends RecyclerView.Adapter<SampleViewHolder.Default> {
 
+    @Nullable private final SampleViewHolder.Listener listener;
     private List<ViewData> viewDataList;
 
-    public SampleAdapter(List<ViewData> viewDataList) {
+    public SampleAdapter(List<ViewData> viewDataList, @Nullable SampleViewHolder.Listener listener) {
+        this.listener = listener;
         this.viewDataList = viewDataList;
     }
 
@@ -56,7 +59,7 @@ public class SampleAdapter extends RecyclerView.Adapter<SampleViewHolder.Default
     public void onBindViewHolder(@NonNull SampleViewHolder.Default viewHolder, int position) {
         // viewHolderが持っているbindメソッドで要素をバインディング
 
-        viewHolder.bind(viewDataList.get(position));
+        viewHolder.bind(viewDataList.get(position), listener);
     }
 
     @Override

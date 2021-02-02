@@ -7,6 +7,7 @@ import androidx.databinding.Bindable;
 
 import com.android.recyclerviewsample_java.BR;
 
+// すでに継承しているため、多重継承できなそう
 public class FormButtonViewData extends BaseObservable implements ViewData {
 
     private String formText;
