@@ -1,5 +1,7 @@
 package com.android.recyclerviewsample_java.list;
 
+import androidx.annotation.Nullable;
+import androidx.databinding.BaseObservable;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -7,7 +9,18 @@ import com.android.recyclerviewsample_java.databinding.ItemFormButtonBinding;
 import com.android.recyclerviewsample_java.databinding.ItemHeaderBinding;
 import com.android.recyclerviewsample_java.databinding.ItemTextsBinding;
 
+import java.util.List;
+
 public class SampleViewHolder {
+
+    // リスナをセット
+    public static abstract class Listener {
+        // viewModel と viewModelImpl を作成して処理を実装する
+
+        // OKボタンのクリックリスナ 抽象メソッド
+        public abstract void onOkButtonClick();
+    }
+
 
     // 抽象クラス <T extends OrderViewData>はOrderViewDataを継承しているクラスに限定しているってこと？
     public static abstract class Default<T extends ViewData> extends RecyclerView.ViewHolder {
@@ -24,7 +37,7 @@ public class SampleViewHolder {
         }
 
         // 抽象メソッド　型を限定していないジェネリクス型
-        public abstract void bind(T viewData);
+        public abstract void bind(T viewData, @Nullable Listener listener);
     }
 
     // ここで形がわかる？
@@ -40,7 +53,7 @@ public class SampleViewHolder {
         }
 
         @Override
-        public void bind(HeaderViewData viewData) {
+        public void bind(HeaderViewData viewData, @Nullable Listener listener) {
             // viewData をレイアウト要素と結びつけている
             itemHeaderBinding.setViewData(viewData);
         }
@@ -58,7 +71,7 @@ public class SampleViewHolder {
         }
 
         @Override
-        public void bind(TextsViewData viewData) {
+        public void bind(TextsViewData viewData, @Nullable Listener listener) {
             // viewData をレイアウト要素と結びつけている
             itemTextsBinding.setViewData(viewData);
         }
@@ -74,9 +87,10 @@ public class SampleViewHolder {
         }
 
         @Override
-        public void bind(FormButtonViewData viewData) {
+        public void bind(FormButtonViewData viewData, @Nullable Listener listener) {
             // setViewData() の set~ は xml の<variable name="viewData" の命名に基づいて生成されるメソッド
             itemFormButtonBinding.setViewData(viewData);
+            itemFormButtonBinding.setListener(listener);
         }
     }
 }

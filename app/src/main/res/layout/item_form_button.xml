@@ -5,6 +5,10 @@
     <data>
 
         <variable
+            name="listener"
+            type="com.android.recyclerviewsample_java.list.SampleViewHolder.Listener" />
+
+        <variable
             name="viewData"
             type="com.android.recyclerviewsample_java.list.FormButtonViewData" />
     </data>
@@ -35,6 +39,7 @@
             android:layout_height="40dp"
             android:text="OK"
             android:enabled="@{viewData.buttonEnable}"
+            android:onClick="@{() -> listener.onOkButtonClick()}"
             app:layout_constraintStart_toEndOf="@id/input_form"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

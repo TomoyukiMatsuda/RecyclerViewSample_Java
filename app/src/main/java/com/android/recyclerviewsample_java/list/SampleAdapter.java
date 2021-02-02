@@ -55,6 +55,7 @@ public class SampleAdapter extends RecyclerView.Adapter<SampleViewHolder.Default
     @Override
     public void onBindViewHolder(@NonNull SampleViewHolder.Default viewHolder, int position) {
         // viewHolderが持っているbindメソッドで要素をバインディング
+
         viewHolder.bind(viewDataList.get(position));
     }
 
